@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Show event information
-        run: echo ${{ toJSON(github.event)}}
+        run: echo "${{ toJSON(github.event) }}"
         
       - run: echo "🎉 The job was automatically triggered by ${{ github.event_name }} event."
       
