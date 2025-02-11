@@ -1,0 +1,12 @@
+name: Concurrency Demo
+
+on: [workflow_dispatch]
+
+concurrency:
+  group: sample-concurrency-group
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job 1 is running"
