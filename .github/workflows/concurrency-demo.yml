@@ -4,6 +4,7 @@ on: [workflow_dispatch]
 
 concurrency:
   group: sample-concurrency-group
+  cancel-in-progress: true
 
 jobs:
   job1:
