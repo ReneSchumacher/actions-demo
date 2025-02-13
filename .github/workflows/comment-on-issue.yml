@@ -1,0 +1,16 @@
+name: Comment on issue
+
+run-name: Comment on new issue ${{ github.event.issue.id }}
+
+on:
+  issues:
+    types: [opened]  
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on issue
+        run: gh issue comment ${{ github.event.issue.id }} -m "Greetings from GitHub Actions 👋, and thank you for opening this issue! 🎖️" -R ${{ github.action_repository }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
