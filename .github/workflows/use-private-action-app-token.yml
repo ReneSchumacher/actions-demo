@@ -21,7 +21,7 @@ jobs:
         id: app-token
         with:
           app-id: ${{ secrets.REPO_ACCESS_ID }}
-          private-key: ${{ secrets.REPO_ACCESS_TOKEN }}
+          private-key: ${{ secrets.REPO_ACCESS_KEY }}
 
       - name: Clone private actions repo
         uses: actions/checkout@v4
