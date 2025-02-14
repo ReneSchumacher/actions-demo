@@ -1,0 +1,22 @@
+name: Use private action
+
+run-name: Greeting ${{ inputs.who-to-greet }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      who-to-greet:
+        type: string
+        description: Who should I greet?
+        default: World
+        required: true
+
+jobs:
+  # Only works if private repo is accessible by other (private/internal) repos
+  greet-someone-with-repo-access:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greet someone
+        uses: ReneSchumacher/custom-docker-action@v1
+        with:
+          who-to-greet: ${{ inputs.who-to-greet }}
