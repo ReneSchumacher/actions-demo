@@ -22,6 +22,8 @@ jobs:
         with:
           app-id: ${{ secrets.REPO_ACCESS_ID }}
           private-key: ${{ secrets.REPO_ACCESS_KEY }}
+          owner: ReneSchumacher
+          repositories: custom-script-action
 
       - name: Clone private actions repo
         uses: actions/checkout@v4
