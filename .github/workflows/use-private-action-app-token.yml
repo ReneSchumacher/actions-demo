@@ -1,4 +1,4 @@
-name: Use private action
+name: Use private action (app token)
 
 run-name: Greeting ${{ inputs.who-to-greet }}
 
