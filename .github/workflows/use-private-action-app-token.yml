@@ -1,0 +1,37 @@
+name: Use private action
+
+run-name: Greeting ${{ inputs.who-to-greet }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      who-to-greet:
+        type: string
+        description: Who should I greet?
+        default: World
+        required: true
+
+jobs:
+  # Needs a GitHub app with at least read access to private repo
+  greet-someone-without-repo-access:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get app token
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ secrets.REPO_ACCESS_ID }}
+          private-key: ${{ secrets.REPO_ACCESS_TOKEN }}
+
+      - name: Clone private actions repo
+        uses: actions/checkout@v4
+        with:
+          repository: ReneSchumacher/custom-script-action
+          ref: v1
+          token: ${{ steps.app-token.outputs.token }}
+          path: actions/custom-script-action
+
+      - name: Greet someone
+        uses: ./actions/custom-script-action
+        with:
+          who-to-greet: ${{ inputs.who-to-greet }}
