@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
         
         # This step shows how malicious context input may harm a workflow.
         # To demo, create an issue with title a";ls -lRa $GITHUB_WORKSPACE"
