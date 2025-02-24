@@ -11,6 +11,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         
+        # This step shows how malicious context input may harm a workflow.
+        # To demo, create an issue with title a";ls -lRa $GITHUB_WORKSPACE"
+        # This will list the content of the cloned repo
       - name: Run vulnerable script
         run: |
           title="${{ github.event.issue.title }}"
