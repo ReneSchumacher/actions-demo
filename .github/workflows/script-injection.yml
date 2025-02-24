@@ -8,6 +8,9 @@ jobs:
   script-job:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        
       - name: Run vulnerable script
         run: |
           title="${{ github.event.issue.title }}"
