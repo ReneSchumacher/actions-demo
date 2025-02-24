@@ -27,7 +27,7 @@ jobs:
         continue-on-error: true
 
       # Fixed step with intermediate environment variable
-      - name: Run vulnerable script
+      - name: Run secure script
         run: |
           if [[ $TITLE =~ ^octocat ]]; then
             echo "PR title starts with 'octocat'"
