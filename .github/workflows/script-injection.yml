@@ -24,3 +24,18 @@ jobs:
             echo "PR title did not start with 'octocat'"
             exit 1
           fi
+        continue-on-error: true
+
+      # Fixed step with intermediate environment variable
+      - name: Run vulnerable script
+        run: |
+          if [[ $TITLE =~ ^octocat ]]; then
+            echo "PR title starts with 'octocat'"
+            exit 0
+          else
+            echo "PR title did not start with 'octocat'"
+            exit 1
+          fi
+        env:
+          TITLE: ${{ github.event.issue.title }}
+        continue-on-error: true
