@@ -43,6 +43,6 @@ jobs:
 
       - name: Use environment secret
         run: |
-          echo ${{ secrets.ENV_SECRET }} | base64
+          echo "The secret value is: ${{ secrets.ENV_SECRET }}" | base64
           echo
           echo To check the secret value, base64-decode it
