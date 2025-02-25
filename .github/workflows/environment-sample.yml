@@ -2,6 +2,10 @@ name: Environment Sample
 
 on: [workflow_dispatch]
 
+permissions:
+  contents: read
+  id-token: write
+  
 jobs:
   dev-job:
     name: Build
@@ -31,3 +35,6 @@ jobs:
       environment: Prod
       artifact-name: ${{ vars.ARTIFACT_NAME }}
     secrets: inherit
+    permissions:
+      contents: read
+      id-token: write
